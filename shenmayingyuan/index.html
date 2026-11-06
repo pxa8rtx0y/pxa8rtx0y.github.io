@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神马影院-神马影院在线影视资源_高清电影电视剧观看</title>
+<meta name="description" content="神马影院首页，汇集电影、电视剧、综艺与动漫等在线影视资源，提供分类浏览、片单推荐与快速搜索入口，帮助访客找到想看的高清内容。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23181a24'/%3E%3Cpath d='M16 20h32v6H16zM16 30h32v6H16zM16 40h20v6H16z' fill='%23ff5c5c'/%3E%3Cpath d='M40 40l10 4-10 4z' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#161823;
+    --ink-soft:#4a4f5e;
+    --paper:#fbfaf7;
+    --card:#ffffff;
+    --line:#e6e3dc;
+    --brand:#e8433f;
+    --brand-dark:#b52f2c;
+    --gold:#e7b23f;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",system-ui,sans-serif;
+    line-height:1.75;
+    font-size:16px;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;}
+  .wrap{width:min(1120px,92vw);margin:0 auto;}
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:20;
+    background:rgba(251,250,247,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex;align-items:center;gap:18px;padding:12px 0;}
+  .logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .logo .mark{
+    width:38px;height:38px;border-radius:10px;
+    background:linear-gradient(140deg,#23263a,#12131c);
+    display:grid;place-items:center;
+  }
+  .logo .mark svg{width:22px;height:22px;}
+  .logo .name{
+    font-weight:800;font-size:20px;letter-spacing:.5px;color:var(--ink);
+  }
+  nav.main{margin-left:auto;display:flex;gap:22px;font-size:15px;color:var(--ink-soft);}
+  nav.main a{padding:4px 0;border-bottom:2px solid transparent;transition:.2s;}
+  nav.main a:hover,nav.main a:focus-visible{color:var(--brand);border-bottom-color:var(--brand);}
+
+  /* hero */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 380px at 88% -10%,rgba(232,67,63,.16),transparent 70%),
+      radial-gradient(700px 320px at 0% 110%,rgba(231,178,63,.16),transparent 70%),
+      #1b1d29;
+    color:#f4f2ee;
+    padding:56px 0 48px;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:2px;color:var(--gold);
+    border:1px solid rgba(231,178,63,.45);border-radius:999px;
+    padding:3px 12px;margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(30px,4.4vw,46px);
+    line-height:1.25;margin:0 0 16px;font-weight:800;letter-spacing:1px;
+  }
+  .hero p.lead{
+    margin:0 0 26px;color:#c9c7c2;font-size:16px;max-width:34em;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:999px;font-size:15px;font-weight:600;
+    transition:.2s;cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--brand);color:#fff;}
+  .btn-primary:hover{background:var(--brand-dark);}
+  .btn-ghost{background:transparent;color:#f0eee9;border:1px solid rgba(255,255,255,.32);}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06);}
+  .hero-stats{display:flex;gap:28px;margin-top:32px;flex-wrap:wrap;}
+  .hero-stats div span{display:block;font-size:22px;font-weight:800;color:#fff;}
+  .hero-stats div small{color:#9a9aa5;font-size:13px;letter-spacing:.5px;}
+
+  .poster-stack{position:relative;height:300px;}
+  .poster{
+    position:absolute;border-radius:12px;overflow:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,.45);
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .poster.p1{width:150px;height:212px;left:6%;top:26px;transform:rotate(-6deg);background:linear-gradient(160deg,#3a2d4d,#1d2436);}
+  .poster.p2{width:158px;height:224px;left:34%;top:0;transform:rotate(2deg);background:linear-gradient(160deg,#5a2b2b,#20222e);z-index:2;}
+  .poster.p3{width:140px;height:198px;right:2%;top:58px;transform:rotate(8deg);background:linear-gradient(160deg,#1f3b3a,#1b1e2a);}
+  .poster .dvd{
+    position:absolute;inset:auto 10px 10px 10px;font-size:11px;color:#e6e2da;
+    letter-spacing:1px;opacity:.85;
+  }
+  .poster::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 50% 38%,rgba(255,255,255,.22) 0 2px,transparent 3px),
+      radial-gradient(circle at 32% 62%,rgba(255,255,255,.12) 0 1.5px,transparent 2.5px),
+      radial-gradient(circle at 70% 66%,rgba(255,255,255,.12) 0 1.5px,transparent 2.5px);
+    background-size:auto;
+  }
+
+  /* sections */
+  section{padding:56px 0;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap;}
+  .sec-head h2{
+    font-size:24px;margin:0;font-weight:800;letter-spacing:.5px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .sec-head h2::before{
+    content:"";width:6px;height:22px;border-radius:3px;background:var(--brand);
+  }
+  .sec-head .note{color:var(--ink-soft);font-size:14px;margin:0;}
+
+  /* search */
+  .search-box{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+    box-shadow:0 6px 20px rgba(22,24,35,.04);
+  }
+  .search-box label{font-size:14px;color:var(--ink-soft);}
+  .search-box input[type="search"]{
+    flex:1 1 240px;min-width:0;padding:11px 14px;border-radius:10px;
+    border:1px solid var(--line);font-size:15px;font-family:inherit;background:#fdfcfa;color:var(--ink);
+  }
+  .search-box input[type="search"]:focus{outline:2px solid rgba(232,67,63,.35);border-color:var(--brand);}
+  .search-box .btn-primary{padding:11px 24px;}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .chip{
+    font-size:13px;color:var(--ink-soft);border:1px solid var(--line);
+    background:#fff;border-radius:999px;padding:4px 13px;cursor:pointer;transition:.18s;
+  }
+  .chip:hover,.chip:focus-visible{border-color:var(--brand);color:var(--brand);}
+  #searchHint{font-size:13px;color:var(--brand);margin:12px 0 0;min-height:1.2em;}
+
+  /* cards */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;transition:.2s;
+  }
+  .card:hover{box-shadow:0 10px 26px rgba(22,24,35,.07);transform:translateY(-2px);}
+  .card .tag{
+    display:inline-block;font-size:12px;letter-spacing:1px;color:var(--brand);
+    background:rgba(232,67,63,.08);border-radius:6px;padding:2px 9px;margin-bottom:12px;
+  }
+  .card h3{font-size:17px;margin:0 0 10px;font-weight:700;}
+  .card p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+
+  /* list */
+  .list{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .list .row{
+    display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;
+    padding:15px 20px;border-bottom:1px solid var(--line);
+  }
+  .list .row:last-child{border-bottom:none;}
+  .list .row:hover{background:#fdfcfa;}
+  .rank{
+    font-weight:800;font-size:17px;color:#b9b5aa;font-variant-numeric:tabular-nums;
+  }
+  .list .row:nth-child(-n+3) .rank{color:var(--brand);}
+  .row .title{font-size:15.5px;font-weight:600;}
+  .row .title small{display:block;font-weight:400;font-size:13px;color:var(--ink-soft);margin-top:2px;}
+  .row .meta{font-size:13px;color:var(--ink-soft);white-space:nowrap;}
+
+  /* prose */
+  .prose p{margin:0 0 16px;color:#33373f;font-size:15.5px;}
+  .prose p:last-child{margin-bottom:0;}
+  .prose strong{color:var(--ink);}
+
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px;}
+  .fact{
+    background:#f6f4ef;border-radius:12px;padding:16px 18px;
+  }
+  .fact b{display:block;font-size:15px;margin-bottom:4px;}
+  .fact span{font-size:13.5px;color:var(--ink-soft);}
+
+  /* download */
+  .dl{
+    background:linear-gradient(135deg,#1c1f2c,#2a2433);
+    color:#f0eee9;border-radius:18px;padding:36px;
+    display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  }
+  .dl h2{margin:0 0 8px;font-size:22px;}
+  .dl p{margin:0;color:#b6b3ae;font-size:14.5px;max-width:36em;}
+  .dl .btn-disabled{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.12);color:#dedbd5;border:1px solid rgba(255,255,255,.22);
+    padding:11px 26px;border-radius:999px;font-size:15px;font-weight:600;
+    pointer-events:none;opacity:.75;
+  }
+
+  /* footer */
+  footer.site{
+    background:#14161f;color:#9d9c99;padding:36px 0 28px;font-size:14px;
+  }
+  footer .fbar{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
+  footer .brandline{display:flex;align-items:center;gap:10px;color:#e8e5df;font-weight:700;font-size:16px;}
+  footer .flinks{display:flex;gap:20px;flex-wrap:wrap;}
+  footer .flinks a:hover{color:#fff;}
+  footer .copy{margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:#77787e;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .poster-stack{display:none;}
+    .grid-3{grid-template-columns:1fr;}
+    .grid-2{grid-template-columns:1fr;}
+    .facts{grid-template-columns:1fr;}
+    nav.main{gap:16px;font-size:14px;}
+  }
+  @media (max-width:640px){
+    .bar{flex-wrap:wrap;gap:10px;}
+    nav.main{
+      margin-left:0;width:100%;overflow-x:auto;white-space:nowrap;
+      padding-bottom:4px;gap:18px;
+    }
+    .logo .name{font-size:18px;}
+    .hero{padding:40px 0 36px;}
+    section{padding:40px 0;}
+    .dl{padding:26px;border-radius:14px;}
+    .list .row{grid-template-columns:36px 1fr;padding:14px 16px;}
+    .list .row .meta{grid-column:2;color:#9a9690;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="神马影院首页">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" role="img">
+          <path d="M12 18h40v8H12z" fill="#ff5c5c"/>
+          <path d="M12 30h40v8H12z" fill="#ffd166"/>
+          <path d="M12 42h26v8H12z" fill="#8fd3c7"/>
+          <path d="M44 42l12 4-12 4z" fill="#ffffff"/>
+        </svg>
+      </span>
+      <span class="name">神马影院</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#hot">热播排行</a>
+      <a href="#library">片库分类</a>
+      <a href="#guide">观影须知</a>
+      <a href="#download">客户端</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">在线影视 · 首页</span>
+        <h1>神马影院</h1>
+        <p class="lead">神马影院把电影、电视剧、综艺与动漫放在同一个页面里：先看热播排行，再按分类进片库，想找具体片子直接用顶部搜索。首页只做三件事——让你快速知道现在看什么、去哪个分类找、以及如何找到片名。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#library">进入片库分类</a>
+          <a class="btn btn-ghost" href="#hot">查看热播排行</a>
+        </div>
+        <div class="hero-stats">
+          <div><span>4</span><small>内容大类</small></div>
+          <div><span>1</span><small>全站搜索入口</small></div>
+          <div><span>12</span><small>首页榜单位置</small></div>
+        </div>
+      </div>
+      <div class="poster-stack" aria-hidden="true">
+        <div class="poster p1"><span class="dvd">剧情 · 长片</span></div>
+        <div class="poster p2"><span class="dvd">剧集 · 连载</span></div>
+        <div class="poster p3"><span class="dvd">动漫 · 番剧</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="search">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>找片搜索</h2>
+        <p class="note">输入片名关键词，页面会提示对应的分类入口</p>
+      </div>
+      <form class="search-box" id="searchForm" role="search" onsubmit="return false;">
+        <label for="q">片名关键词</label>
+        <input type="search" id="q" name="q" placeholder="例如：悬疑、家庭、动漫" autocomplete="off">
+        <button class="btn btn-primary" type="button" id="searchBtn">搜索</button>
+      </form>
+      <div class="chips" aria-label="热门搜索词">
+        <button class="chip" type="button">悬疑</button>
+        <button class="chip" type="button">都市</button>
+        <button class="chip" type="button">家庭</button>
+        <button class="chip" type="button">科幻</button>
+        <button class="chip" type="button">动漫</button>
+        <button class="chip" type="button">综艺</button>
+      </div>
+      <p id="searchHint" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="hot">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>热播排行</h2>
+        <p class="note">按首页展示热度排序，点击条目可继续浏览同类内容</p>
+      </div>
+      <div class="grid-2">
+        <div class="list">
+          <div class="row"><span class="rank">01</span><span class="title">长夜将明<small>电影 · 悬疑推理</small></span><span class="meta">电影</span></div>
+          <div class="row"><span class="rank">02</span><span class="title">旧城新事<small>电视剧 · 都市生活</small></span><span class="meta">剧集</span></div>
+          <div class="row"><span class="rank">03</span><span class="title">山海拾遗<small>动漫 · 奇幻冒险</small></span><span class="meta">动漫</span></div>
+          <div class="row"><span class="rank">04</span><span class="title">周末厨房<small>综艺 · 慢生活</small></span><span class="meta">综艺</span></div>
+          <div class="row"><span class="rank">05</span><span class="title">归途有风<small>电影 · 家庭剧情</small></span><span class="meta">电影</span></div>
+          <div class="row"><span class="rank">06</span><span class="title">星轨之外<small>电影 · 科幻</small></span><span class="meta">电影</span></div>
+          <div class="row"><span class="rank">07</span><span class="title">少年与海<small>电视剧 · 成长</small></span><span class="meta">剧集</span></div>
+          <div class="row"><span class="rank">08</span><span class="title">纸上年华<small>动漫 · 治愈</small></span><span class="meta">动漫</span></div>
+        </div>
+        <div class="prose">
+          <p>排行只是入口，不是结论。<strong>神马影院</strong>的首页把位置留给近期被反复点开的内容，因此同一部片子在不同时间可能出现在不同名次，这反映的是访问者的选择，而不是内容本身的评分。</p>
+          <p>如果想找更细分的方向，可以直接跳到片库分类：电影偏单片叙事，电视剧按集推进，综艺以单期为主，动漫则以番剧连载的方式呈现。四类内容的观看节奏不同，首页把它们并排陈列，是为了让访客先确定自己要看多长的一段。</p>
+          <p>对不熟悉本站结构的访客，建议的路径是：先在排行里挑一个类型，再进入对应分类看标题与简介，最后用搜索确认片名。神马影院不在首页堆放太多信息，避免在选片阶段增加判断成本。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="library">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>片库分类</h2>
+        <p class="note">按内容形态划分，每类对应独立的浏览方式</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="tag">电影</span>
+          <h3>单片叙事，一次看完</h3>
+          <p>悬疑、家庭、科幻、剧情等方向集中在电影分类。单片时长相对固定，适合先看简介再决定是否继续；排行中的电影条目通常会有更完整的剧情概述。</p>
+        </article>
+        <article class="card">
+          <span class="tag">电视剧</span>
+          <h3>分集连载，按节奏追</h3>
+          <p>都市、成长、年代等题材以剧集形式呈现，集数较多。浏览时先看总集数与更新状态，再决定是否从第一集开始；首页只展示当前较受关注的作品。</p>
+        </article>
+        <article class="card">
+          <span class="tag">综艺</span>
+          <h3>单期节目，随看随停</h3>
+          <p>慢生活、竞技、访谈类节目以单期为单元，不要求连续观看。适合碎片时间，也适合先看某一期判断风格，再回到节目主页按顺序浏览。</p>
+        </article>
+        <article class="card">
+          <span class="tag">动漫</span>
+          <h3>番剧连载，按季度更新</h3>
+          <p>奇幻、治愈、冒险等题材以番剧形式组织，通常按季划分。首页把动漫单列，是因为其更新周期与剧集不同，追番与补番的入口需要分开。</p>
+        </article>
+        <article class="card">
+          <span class="tag">短片</span>
+          <h3>短时长内容，快速试看</h3>
+          <p>预告、花絮与短片时长较短，用来判断是否继续观看正片。神马影院把短片放在独立位置，避免与完整作品混排，减少误点。</p>
+        </article>
+        <article class="card">
+          <span class="tag">片单</span>
+          <h3>按主题聚合的浏览方式</h3>
+          <p>片单把不同形态的内容按主题串起来，例如某个导演、某类题材或某个时间段。它不是排行，而是给已有明确兴趣方向的访客一条更短的路径。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>观影须知</h2>
+        <p class="note">关于浏览、播放与内容状态的基本说明</p>
+      </div>
+      <div class="grid-2">
+        <div class="prose">
+          <p>神马影院的首页不承载播放本身，它负责把访客送到正确的分类或条目页。播放页会显示当前可用的清晰度选项，具体可选项取决于该内容的上线状态，不同作品之间并不一致。</p>
+          <p>内容状态分为已上线、连载中与待上线三类。连载中的剧集与番剧会按既定周期更新，首页排行里的条目如果仍在更新，通常会在简介中注明当前进度；待上线内容只保留条目信息，不提供播放入口。</p>
+          <p>搜索采用片名关键词匹配，输入越接近完整片名，结果越集中。如果只记得题材，建议先用分类浏览，再用搜索收敛范围，这样比直接用宽泛的词检索更有效。</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>浏览不需要登录</b><span>首页、分类与条目信息均可直接查看。</span></div>
+          <div class="fact"><b>清晰度随内容而定</b><span>不同作品提供的选项并不统一。</span></div>
+          <div class="fact"><b>更新进度以条目页为准</b><span>首页只做提示，不代替条目页说明。</span></div>
+          <div class="fact"><b>搜索支持题材词</b><span>宽泛词结果较多，建议配合分类使用。</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="wrap">
+      <div class="dl">
+        <div>
+          <h2>神马影院客户端</h2>
+          <p>客户端把片库、排行与搜索集中在一个入口，适合在固定设备上长期使用。当前安装包尚未提供下载地址，入口暂时禁用，正式地址上线后可直接替换。</p>
+        </div>
+        <a class="btn-disabled" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fbar">
+      <div class="brandline">
+        <svg width="20" height="20" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M12 18h40v8H12z" fill="#ff5c5c"/>
+          <path d="M12 30h40v8H12z" fill="#ffd166"/>
+          <path d="M12 42h26v8H12z" fill="#8fd3c7"/>
+        </svg>
+        神马影院
+      </div>
+      <div class="flinks">
+        <a href="#hot">热播排行</a>
+        <a href="#library">片库分类</a>
+        <a href="#guide">观影须知</a>
+        <a href="#download">客户端</a>
+      </div>
+    </div>
+    <div class="copy">神马影院首页 · 内容分类、排行与搜索入口集中于此页；播放与更新状态以对应条目页说明为准。</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('q');
+  var hint = document.getElementById('searchHint');
+  var map = [
+    {keys:['悬疑','推理','剧情','家庭','科幻','电影','长片'], label:'电影分类：悬疑、家庭、科幻与剧情方向'},
+    {keys:['都市','成长','年代','剧','电视剧','连载'], label:'电视剧分类：都市、成长与年代题材'},
+    {keys:['综艺','节目','慢生活','访谈','竞技'], label:'综艺分类：以单期为单元，可随看随停'},
+    {keys:['动漫','番剧','奇幻','治愈','冒险'], label:'动漫分类：按季更新的番剧与短片'}
+  ];
+  function run(){
+    var v = (input.value || '').trim();
+    if(!v){ hint.textContent = '请输入片名或题材关键词。'; return; }
+    var hit = map.filter(function(m){
+      return m.keys.some(function(k){ return v.indexOf(k) > -1 || k.indexOf(v) > -1; });
+    });
+    if(hit.length){
+      hint.textContent = '建议前往：' + hit.map(function(h){ return h.label; }).join('；') + '。';
+    }else{
+      hint.textContent = '暂未匹配到分类提示，可尝试更短的题材词，或在片库分类中逐类浏览。';
+    }
+  }
+  document.getElementById('searchBtn').addEventListener('click', run);
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); run(); } });
+  Array.prototype.forEach.call(document.querySelectorAll('.chip'), function(c){
+    c.addEventListener('click', function(){
+      input.value = c.textContent.trim();
+      run();
+      input.focus();
+    });
+  });
+})();
+</script>
+</body>
+</html>
