@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>r星每日大赛寸止挑战-寸止挑战每日大赛_r星大赛热门挑战合集</title>
+<meta name="description" content="r星每日大赛寸止挑战是围绕热门每日大赛展开的挑战专题首页，汇集当日挑战看点、热门挑战合集与参与入口，帮助访客快速了解r星每日大赛寸止挑战的内容与玩法。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111a2b'/%3E%3Cpath d='M32 12l5.6 13.2L52 27l-10.6 9.4L44.6 52 32 44.6 19.4 52l3.2-15.6L12 27l14.4-1.8z' fill='%23ffd24a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#0f1524;
+  --ink-soft:#2a3550;
+  --muted:#5d6885;
+  --line:#e3e7f0;
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --gold:#ffd24a;
+  --gold-deep:#e0a800;
+  --blue:#1f3a8a;
+  --shadow:0 10px 30px rgba(15,21,36,.08);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.75;
+  font-size:16px;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1140px,92vw);margin:0 auto}
+
+/* Header */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,247,251,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;gap:24px;
+  min-height:68px;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;flex-shrink:0;
+}
+.logo-mark{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(150deg,#1b2740,#0f1524);
+  display:grid;place-items:center;
+  box-shadow:0 4px 12px rgba(15,21,36,.25);
+}
+.logo-text{
+  font-weight:800;font-size:16px;letter-spacing:.2px;
+  color:var(--ink);white-space:nowrap;
+}
+nav.links{
+  display:flex;gap:22px;margin-left:auto;flex-wrap:wrap;
+}
+nav.links a{
+  text-decoration:none;font-size:14.5px;color:var(--ink-soft);
+  font-weight:600;padding:4px 0;border-bottom:2px solid transparent;
+  transition:.18s;
+}
+nav.links a:hover{color:var(--blue);border-color:var(--gold)}
+.nav-cta{
+  text-decoration:none;font-size:14px;font-weight:700;
+  background:var(--ink);color:#fff;padding:9px 16px;border-radius:10px;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:var(--blue)}
+
+/* Hero */
+.hero{
+  padding:54px 0 40px;
+  background:
+    radial-gradient(900px 320px at 88% -10%,rgba(255,210,74,.28),transparent 62%),
+    radial-gradient(700px 300px at 8% 0%,rgba(31,58,138,.10),transparent 60%);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;color:var(--blue);
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:5px 13px;margin-bottom:18px;
+}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-deep)}
+h1{
+  font-size:clamp(28px,4vw,44px);
+  line-height:1.22;margin:0 0 16px;font-weight:900;letter-spacing:.5px;
+}
+.hero p.lead{
+  margin:0 0 24px;color:var(--ink-soft);font-size:16.5px;max-width:36em;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink);color:#fff;text-decoration:none;
+  font-weight:700;font-size:15px;padding:13px 22px;border-radius:12px;
+  box-shadow:0 8px 20px rgba(15,21,36,.22);
+  transition:.18s;
+}
+.btn-primary:hover{background:var(--blue);transform:translateY(-1px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  text-decoration:none;font-weight:700;font-size:15px;
+  padding:12px 20px;border-radius:12px;color:var(--ink);
+  background:#fff;border:1px solid var(--line);
+}
+.btn-ghost:hover{border-color:var(--gold-deep)}
+.hero-stats{
+  display:flex;gap:26px;margin-top:30px;flex-wrap:wrap;
+}
+.hero-stats div{font-size:13.5px;color:var(--muted)}
+.hero-stats strong{display:block;font-size:21px;color:var(--ink);font-weight:900;line-height:1.3}
+
+.hero-art{
+  background:linear-gradient(160deg,#141d31,#1f3a8a 82%);
+  border-radius:22px;padding:26px;color:#fff;
+  box-shadow:0 20px 50px rgba(20,29,49,.28);
+  position:relative;overflow:hidden;
+}
+.hero-art::after{
+  content:"";position:absolute;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,210,74,.35),transparent 68%);
+  right:-70px;top:-70px;
+}
+.hero-art h3{
+  margin:6px 0 4px;font-size:17px;font-weight:800;letter-spacing:.3px;
+}
+.hero-art .art-sub{font-size:12.5px;color:#c3cbe4;margin-bottom:18px}
+.timer{
+  display:flex;gap:8px;margin-bottom:18px;
+}
+.timer span{
+  flex:1;text-align:center;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.16);border-radius:10px;
+  padding:8px 4px;font-size:20px;font-weight:900;color:var(--gold);
+  font-variant-numeric:tabular-nums;
+}
+.timer small{display:block;font-size:11px;font-weight:500;color:#aeb8d4;margin-top:2px}
+.art-list{list-style:none;margin:0;padding:0;font-size:13.5px;color:#dbe2f3}
+.art-list li{
+  display:flex;justify-content:space-between;gap:10px;
+  padding:9px 0;border-top:1px dashed rgba(255,255,255,.16);
+}
+.art-list li b{color:#fff;font-weight:700}
+
+/* Section shell */
+section.block{padding:46px 0}
+.sec-head{margin-bottom:26px;max-width:44em}
+.sec-head .tag{
+  font-size:13px;font-weight:800;color:var(--gold-deep);
+  letter-spacing:1px;margin-bottom:6px;display:block;
+}
+h2{
+  font-size:clamp(21px,2.6vw,28px);margin:0 0 10px;font-weight:900;letter-spacing:.3px;
+}
+.sec-head p{margin:0;color:var(--muted);font-size:15px}
+
+/* Cards */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:10px;
+}
+.card .ic{
+  width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(140deg,#fff6d6,#ffe79a);
+}
+.card h3{margin:2px 0 0;font-size:16.5px;font-weight:800}
+.card p{margin:0;font-size:14.5px;color:var(--ink-soft)}
+.card .meta{font-size:12.5px;color:var(--muted);margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
+
+/* Challenge list */
+.challenge-box{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.challenge-toolbar{
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+  padding:16px 20px;border-bottom:1px solid var(--line);background:#fbfcfe;
+}
+.challenge-toolbar label{font-size:13.5px;font-weight:700;color:var(--ink-soft)}
+#chFilter{
+  flex:1;min-width:180px;padding:10px 13px;border-radius:10px;
+  border:1px solid var(--line);font-size:14px;font-family:inherit;
+  background:#fff;color:var(--ink);outline:none;
+}
+#chFilter:focus{border-color:var(--gold-deep);box-shadow:0 0 0 3px rgba(255,210,74,.25)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  border:1px solid var(--line);background:#fff;border-radius:999px;
+  padding:6px 14px;font-size:13px;font-weight:700;color:var(--ink-soft);
+  cursor:pointer;font-family:inherit;transition:.16s;
+}
+.chip:hover{border-color:var(--gold-deep)}
+.chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+ul.ch-list{list-style:none;margin:0;padding:0}
+ul.ch-list li{
+  display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;
+  padding:16px 20px;border-bottom:1px solid var(--line);
+}
+ul.ch-list li:last-child{border-bottom:none}
+.rank{
+  width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+  font-weight:900;font-size:15px;background:#f1f3f9;color:var(--ink-soft);
+}
+.rank.top{background:linear-gradient(140deg,#ffe79a,#ffd24a);color:#3a2c00}
+ul.ch-list h4{margin:0 0 2px;font-size:15.5px;font-weight:800}
+ul.ch-list .desc{font-size:13.5px;color:var(--muted)}
+ul.ch-list .badge{
+  font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;
+  background:#eef2ff;color:var(--blue);white-space:nowrap;
+}
+ul.ch-list .badge.warm{background:#fff4e0;color:#9a6400}
+.empty{padding:28px 20px;text-align:center;color:var(--muted);font-size:14.5px;display:none}
+
+/* Article + aside */
+.two-col{display:grid;grid-template-columns:1.55fr .95fr;gap:32px;align-items:start}
+.article h2{margin-top:0}
+.article h3{font-size:17px;margin:24px 0 8px;font-weight:800}
+.article p{margin:0 0 14px;font-size:15.3px;color:var(--ink-soft)}
+.article p:last-child{margin-bottom:0}
+.callout{
+  border-left:4px solid var(--gold);background:#fffdf3;
+  padding:14px 18px;border-radius:0 12px 12px 0;
+  font-size:14.5px;color:var(--ink-soft);margin:20px 0;
+}
+.callout b{color:var(--ink)}
+aside.side{display:flex;flex-direction:column;gap:18px}
+.side-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow);
+}
+.side-card h3{margin:0 0 12px;font-size:15.5px;font-weight:800}
+.side-card ul{margin:0;padding:0;list-style:none;font-size:14px;color:var(--ink-soft)}
+.side-card li{padding:7px 0;border-bottom:1px dashed var(--line);display:flex;gap:8px}
+.side-card li:last-child{border-bottom:none}
+.side-card li::before{content:"•";color:var(--gold-deep);font-weight:900}
+.dl-box{background:linear-gradient(160deg,#141d31,#1f3a8a);color:#fff;border:none}
+.dl-box h3{color:#fff}
+.dl-box p{font-size:13.5px;color:#c9d2ea;margin:0 0 14px}
+.btn-dl{
+  display:flex;justify-content:center;align-items:center;gap:8px;
+  background:var(--gold);color:#2c2100;font-weight:900;font-size:15px;
+  padding:12px;border-radius:11px;text-decoration:none;
+  pointer-events:none;opacity:.95;
+}
+.btn-dl small{display:block;font-size:11px;font-weight:600;color:#5d4d00;margin-top:2px}
+
+/* FAQ */
+.faq{display:grid;gap:12px}
+details{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 20px;box-shadow:var(--shadow);
+}
+details summary{
+  cursor:pointer;font-weight:800;font-size:15.2px;list-style:none;
+  display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-size:20px;color:var(--gold-deep);font-weight:900;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:10px 0 0;font-size:14.5px;color:var(--ink-soft)}
+
+/* CTA band */
+.band{
+  background:linear-gradient(135deg,#141d31,#1f3a8a);
+  border-radius:22px;padding:38px 34px;color:#fff;
+  display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;
+  box-shadow:0 20px 45px rgba(20,29,49,.25);
+}
+.band h2{color:#fff;margin:0 0 8px;font-size:clamp(20px,2.4vw,26px)}
+.band p{margin:0;color:#c9d2ea;font-size:14.5px;max-width:40em}
+.band .btn-primary{background:var(--gold);color:#2c2100;box-shadow:none}
+.band .btn-primary:hover{background:#ffdc6e;color:#2c2100}
+
+/* Footer */
+footer.site{
+  margin-top:50px;background:#0f1524;color:#aeb8d4;
+  padding:38px 0 26px;font-size:13.5px;
+}
+footer.site .fgrid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;margin-bottom:26px;
+}
+footer.site h4{color:#fff;font-size:14.5px;margin:0 0 10px;font-weight:800}
+footer.site ul{list-style:none;margin:0;padding:0}
+footer.site li{padding:4px 0}
+footer.site a{text-decoration:none;color:#aeb8d4}
+footer.site a:hover{color:var(--gold)}
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,.12);padding-top:18px;
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:12.5px;color:#7d89a8;
+}
+.foot-logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.foot-logo .logo-mark{width:32px;height:32px;border-radius:9px}
+.foot-logo span{color:#fff;font-weight:800;font-size:14.5px}
+
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .two-col{grid-template-columns:1fr}
+  footer.site .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  body{font-size:15.5px}
+  .nav{min-height:auto;padding:12px 0;flex-wrap:wrap;gap:12px}
+  nav.links{order:3;width:100%;margin-left:0;gap:16px;padding-top:6px;border-top:1px solid var(--line)}
+  .nav-cta{margin-left:auto}
+  .logo-text{font-size:14px;white-space:normal}
+  .hero{padding:34px 0 28px}
+  .grid-3{grid-template-columns:1fr}
+  ul.ch-list li{grid-template-columns:44px 1fr;gap:12px}
+  ul.ch-list .badge{grid-column:2;justify-self:start}
+  .band{padding:28px 22px}
+  footer.site .fgrid{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="r星每日大赛寸止挑战首页">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2.5l2.6 6.1 6.6.6-5 4.3 1.5 6.5L12 16.7 6.3 20l1.5-6.5-5-4.3 6.6-.6z" fill="#ffd24a"/>
+        </svg>
+      </span>
+      <span class="logo-text">r星每日大赛寸止挑战</span>
+    </a>
+    <nav class="links" aria-label="主导航">
+      <a href="#today">今日挑战</a>
+      <a href="#list">挑战榜单</a>
+      <a href="#guide">玩法说明</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a class="nav-cta" href="#today">查看今日</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>每日更新 · 热门挑战专题</span>
+        <h1>r星每日大赛寸止挑战</h1>
+        <p class="lead">这里把每天的热门挑战集中到一起：当日看点、挑战榜单与玩法说明一页读完。r星每日大赛寸止挑战不要求你从头翻记录，打开就能知道今天大家都在聊哪几项挑战。</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#today">
+            进入今日挑战
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffd24a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn-ghost" href="#guide">了解玩法</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>每日</strong>更新节奏</div>
+          <div><strong>多类</strong>挑战主题</div>
+          <div><strong>榜单</strong>热门排行</div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l2.6 6.1 6.6.6-5 4.3 1.5 6.5L12 16.7 6.3 20l1.5-6.5-5-4.3 6.6-.6z" fill="#ffd24a"/></svg>
+        <h3>今日挑战面板</h3>
+        <div class="art-sub">r星每日大赛寸止挑战 · 当日概览</div>
+        <div class="timer">
+          <span>01<small>今日场次</small></span>
+          <span>12<small>热门条目</small></span>
+          <span>Top<small>榜单位置</small></span>
+        </div>
+        <ul class="art-list">
+          <li><span>最短节奏挑战</span><b>热度上升</b></li>
+          <li><span>限时反应挑战</span><b>讨论集中</b></li>
+          <li><span>连击耐力挑战</span><b>稳居前列</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TODAY / 今日看点卡片 -->
+  <section class="block" id="today">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">今日看点</span>
+        <h2>当天的挑战，先看这三件事</h2>
+        <p>r星每日大赛寸止挑战每天的重点并不相同。下面三块内容分别对应看什么、比什么、怎么参与，读完后可以直接跳到榜单。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="ic" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#9a6400" stroke-width="2"/><path d="M12 7.5V12l3 2" stroke="#9a6400" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>当日节奏看什么</h3>
+          <p>先看当天挑战的时长与轮次安排，再判断自己适合短节奏还是长节奏。r星每日大赛寸止挑战的看点在节奏变化，而不是固定套路。</p>
+          <div class="meta">适合新访客快速上手</div>
+        </article>
+        <article class="card">
+          <div class="ic" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8" stroke="#9a6400" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>热度与排名怎么比</h3>
+          <p>榜单按讨论热度与完成情况整理，排名靠前的条目通常更值得先看。想了解 r星每日大赛寸止挑战 的整体走向，榜单比逐条翻更省时间。</p>
+          <div class="meta">每日榜单持续更新</div>
+        </article>
+        <article class="card">
+          <div class="ic" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.2 5.4L20 9.3l-4.2 3.9L17 19l-5-2.8L7 19l1.2-5.8L4 9.3l5.8-.9z" stroke="#9a6400" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>参与前先明确规则</h3>
+          <p>参与前确认挑战类型与判定方式，避免把不同玩法混在一起比较。r星每日大赛寸止挑战的各项条目都标注了类型，方便按需筛选。</p>
+          <div class="meta">按类型筛选更直观</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIST / 挑战榜单 -->
+  <section class="block" id="list" style="padding-top:6px">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">挑战榜单</span>
+        <h2>今日热门挑战排行</h2>
+        <p>用输入框或类型标签筛选条目，结果会即时显示。榜单只保留当前页面内的条目，方便对 r星每日大赛寸止挑战 的热门方向形成整体印象。</p>
+      </div>
+
+      <div class="challenge-box">
+        <div class="challenge-toolbar">
+          <label for="chFilter">搜索挑战</label>
+          <input id="chFilter" type="search" placeholder="输入挑战名称或关键词，如：节奏、耐力" autocomplete="off">
+          <div class="chips" role="group" aria-label="按类型筛选">
+            <button class="chip active" data-type="all" type="button">全部</button>
+            <button class="chip" data-type="节奏" type="button">节奏</button>
+            <button class="chip" data-type="反应" type="button">反应</button>
+            <button class="chip" data-type="耐力" type="button">耐力</button>
+          </div>
+        </div>
+        <ul class="ch-list" id="chList">
+          <li data-type="节奏" data-key="最短节奏挑战 节奏 秒数 轮次">
+            <span class="rank top">01</span>
+            <div>
+              <h4>最短节奏挑战</h4>
+              <p class="desc">节奏 · 以轮次与秒数控制为核心，适合熟悉 r星每日大赛寸止挑战 节奏的访客。</p>
+            </div>
+            <span class="badge warm">热度上升</span>
+          </li>
+          <li data-type="反应" data-key="限时反应挑战 反应 限时 判断">
+            <span class="rank top">02</span>
+            <div>
+              <h4>限时反应挑战</h4>
+              <p class="desc">反应 · 限时内完成判断，讨论集中在时间安排与操作节奏上。</p>
+            </div>
+            <span class="badge">讨论集中</span>
+          </li>
+          <li data-type="耐力" data-key="连击耐力挑战 耐力 连击 稳定">
+            <span class="rank top">03</span>
+            <div>
+              <h4>连击耐力挑战</h4>
+              <p class="desc">耐力 · 看重连续完成的稳定性，是 r星每日大赛寸止挑战 榜单常驻类型。</p>
+            </div>
+            <span class="badge">稳居前列</span>
+          </li>
+          <li data-type="节奏" data-key="分段时间挑战 节奏 分段 时间">
+            <span class="rank">04</span>
+            <div>
+              <h4>分段时间挑战</h4>
+              <p class="desc">节奏 · 把整段流程拆成若干小节，逐段对照，便于复盘。</p>
+            </div>
+            <span class="badge">适合复盘</span>
+          </li>
+          <li data-type="反应" data-key="快速切换挑战 反应 切换 操作">
+            <span class="rank">05</span>
+            <div>
+              <h4>快速切换挑战</h4>
+              <p class="desc">反应 · 在多种状态间切换，考验即时判断，适合熟练访客。</p>
+            </div>
+            <span class="badge">进阶向</span>
+          </li>
+          <li data-type="耐力" data-key="长时段耐力挑战 耐力 长时间 稳定">
+            <span class="rank">06</span>
+            <div>
+              <h4>长时段耐力挑战</h4>
+              <p class="desc">耐力 · 时间跨度更长，适合想系统了解 r星每日大赛寸止挑战 节奏的人。</p>
+            </div>
+            <span class="badge">耗时较长</span>
+          </li>
+        </ul>
+        <div class="empty" id="chEmpty">没有匹配的挑战，换个关键词或选择“全部”试试。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE / 玩法说明 + 侧栏 -->
+  <section class="block" id="guide" style="padding-top:10px">
+    <div class="wrap two-col">
+      <div class="article">
+        <div class="sec-head" style="margin-bottom:18px">
+          <span class="tag">玩法说明</span>
+          <h2>看懂 r星每日大赛寸止挑战 的三个层次</h2>
+        </div>
+        <p>第一次接触时，容易把不同挑战当成同一件事。实际上 r星每日大赛寸止挑战 的条目通常分为三层：类型、节奏与判定。类型决定挑战关注什么，节奏决定它持续多久，判定决定结果怎么算。把这三层拆开看，再对照榜单，理解会快很多。</p>
+
+        <h3>第一层：先确认挑战类型</h3>
+        <p>节奏类重时间分配，反应类重即时判断，耐力类重连续完成。同一份榜单里三类并存，比较时应当同类对比。r星每日大赛寸止挑战 的筛选标签就是按这个思路设计的，先选类型，再看热度。</p>
+
+        <h3>第二层：再看节奏与轮次</h3>
+        <p>短节奏条目轮次少、单轮集中，适合碎片时间查看；长节奏条目轮次多，适合安排整段时间。判断一个条目是否适合自己，先看它属于短节奏还是长节奏，比直接看排名更实用。</p>
+
+        <div class="callout">
+          <b>小提示：</b>如果只是想了解当天在聊什么，从榜单前三项读起即可；如果是准备参与，建议先读玩法说明，再选一个同类挑战对照。
+        </div>
+
+        <h3>第三层：结果怎么理解</h3>
+        <p>榜单上的“热度上升”“讨论集中”等标记反映的是当前关注度，不等于完成难度。r星每日大赛寸止挑战 的条目更新频率较高，今天排名靠前的类型，明天可能换成另一类，因此建议按天查看而不是长期收藏单一条目。</p>
+        <p>需要长期跟进时，可以用页面顶部的筛选框保存自己关注的类型关键词，再逐日对照。这样既能看到 r星每日大赛寸止挑战 的变化，也不会被无关条目分散注意力。</p>
+      </div>
+
+      <aside class="side">
+        <div class="side-card">
+          <h3>今日条目速览</h3>
+          <ul>
+            <li>节奏类：最短节奏挑战、分段时间挑战</li>
+            <li>反应类：限时反应挑战、快速切换挑战</li>
+            <li>耐力类：连击耐力挑战、长时段耐力挑战</li>
+          </ul>
+        </div>
+        <div class="side-card dl-box">
+          <h3>挑战资料下载</h3>
+          <p>整理好的挑战说明与筛选清单，供本地查看与对照。</p>
+          <a class="btn-dl" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">
+            <span>下载<small>资料整理中</small></span>
+          </a>
+        </div>
+        <div class="side-card">
+          <h3>阅读建议</h3>
+          <ul>
+            <li>先看今日看点，建立整体印象</li>
+            <li>再用筛选缩小到目标类型</li>
+            <li>最后读玩法说明核对判定</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">常见问题</span>
+        <h2>关于 r星每日大赛寸止挑战 的常见疑问</h2>
+        <p>下面几组问答覆盖了初次访问最常遇到的情况，内容与页面其他栏目保持一致。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>r星每日大赛寸止挑战 每天都会更新吗？</summary>
+          <p>页面按每日节奏组织内容，今日看点与挑战榜单是主要更新区域。具体条目以页面当前展示为准，排名与标记会随关注度变化。</p>
+        </details>
+        <details>
+          <summary>不同类型的挑战可以直接比较吗？</summary>
+          <p>不建议直接横向比较。节奏、反应、耐力三类关注点不同，r星每日大赛寸止挑战 的筛选功能正是为了先分类再对比，同类之间比较才有参考意义。</p>
+        </details>
+        <details>
+          <summary>榜单上的标记代表什么？</summary>
+          <p>“热度上升”“讨论集中”“稳居前列”等标记描述的是当前关注度与讨论情况，并不等同于难度评级，也不代表完成结果。</p>
+        </details>
+        <details>
+          <summary>想持续跟进有什么简便办法？</summary>
+          <p>用搜索框输入自己关注的类型词，例如“节奏”，页面会即时筛出对应条目；每天打开时重复这一操作，就能形成稳定的跟进路径。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="block" style="padding-top:6px">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>从今日榜单开始看 r星每日大赛寸止挑战</h2>
+          <p>今天的条目已经整理在榜单中，选一个类型，再对照玩法说明，很快就能掌握当天的重点。</p>
+        </div>
+        <a class="btn-primary" href="#list">前往挑战榜单</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="foot-logo">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l2.6 6.1 6.6.6-5 4.3 1.5 6.5L12 16.7 6.3 20l1.5-6.5-5-4.3 6.6-.6z" fill="#ffd24a"/></svg>
+          </span>
+          <span>r星每日大赛寸止挑战</span>
+        </div>
+        <p style="margin:0;max-width:28em">围绕每日热门挑战组织内容的专题首页，提供今日看点、挑战榜单与玩法说明，帮助访客快速了解 r星每日大赛寸止挑战 的当日重点。</p>
+      </div>
+      <div>
+        <h4>页面导航</h4>
+        <ul>
+          <li><a href="#today">今日挑战</a></li>
+          <li><a href="#list">挑战榜单</a></li>
+          <li><a href="#guide">玩法说明</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>内容类型</h4>
+        <ul>
+          <li><a href="#list">节奏类挑战</a></li>
+          <li><a href="#list">反应类挑战</a></li>
+          <li><a href="#list">耐力类挑战</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>r星每日大赛寸止挑战 · 每日挑战专题首页</span>
+      <span>内容以页面当前展示为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('chFilter');
+  var items = Array.prototype.slice.call(document.querySelectorAll('#chList li'));
+  var empty = document.getElementById('chEmpty');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var activeType = 'all';
+
+  function apply(){
+    var q = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function(li){
+      var type = li.getAttribute('data-type') || '';
+      var key = (li.getAttribute('data-key') || '') + ' ' + li.textContent;
+      var okType = activeType === 'all' || type === activeType;
+      var okText = q === '' || key.toLowerCase().indexOf(q) !== -1;
+      var show = okType && okText;
+      li.style.display = show ? '' : 'none';
+      if(show) shown++;
+    });
+    empty.style.display = shown === 0 ? 'block' : 'none';
+  }
+
+  input.addEventListener('input', apply);
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      chips.forEach(function(x){ x.classList.remove('active'); });
+      c.classList.add('active');
+      activeType = c.getAttribute('data-type');
+      apply();
+    });
+  });
+})();
+</script>
+
+</body>
+    </html>
